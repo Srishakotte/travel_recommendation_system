@@ -17,6 +17,7 @@ export const register = async (req, res) => {
       })
 
       await newUser.save()
+      console.log("new:",newUser)
 
       res.status(200).json({ success: true, message: "Successfully created!" })
    } catch (error) {
@@ -28,7 +29,9 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
    try {
       const email = req.body.email
+      console.log("email:",email)
       const user = await User.findOne({ email })
+      console.log("user:",user)
 
       // if user doesn't exist
       if (!user) {
